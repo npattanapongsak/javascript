@@ -1,3 +1,6 @@
+/*
+   Question : convert nested obj to plain obj (1 level deep object)
+*/
 var input = {
     "string":"it is string",
     "array":[1,2,3],
