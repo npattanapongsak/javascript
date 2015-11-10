@@ -1,4 +1,4 @@
-var a = {
+var input = {
     "string":"it is string",
     "array":[1,2,3],
     "object":{name:1},
@@ -17,7 +17,10 @@ var expected = {
   "arrayInObj.array[2]":6,
   "objInArray[0].obj": 2 
 }
+
+// recursive helper function to generate plain object attribute
 function helper(key,value,result){
+  // check to see if this is array
   if(Object.prototype.toString.call(value)==='[object Array]'){
     var i =0;
     for(i=0;i<value.length;i++){
@@ -33,6 +36,7 @@ function helper(key,value,result){
     result[key]=value;  
   }
 }
+
 function plainObj(obj){
   var result ={};
   for(var key in obj){
@@ -42,6 +46,8 @@ function plainObj(obj){
   }
   return result;
 }
+
+// helper function to compare expected and actual result
 function compare(expected, result){
   for(var key in expected){
       if(expected.hasOwnProperty(key)){
@@ -52,4 +58,4 @@ function compare(expected, result){
   }
   return true;
 }
-console.log(compare(expected,plainObj(a)));
+console.log(compare(expected,plainObj(input)));
